@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>File Upload</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" />
+      <button type="submit">Upload</button>
+    </form>
+
+    <!-- Display uploaded file information -->
+    {% if file_info %}
+    <h2>Uploaded File Information:</h2>
+    <p><strong>Filename:</strong> {{ file_info['filename'] }}</p>
+    <p><strong>Content Type:</strong> {{ file_info['content_type'] }}</p>
+    <p><strong>Size:</strong> {{ file_info['size'] }} bytes</p>
+    <p><strong>File Type:</strong> {{ file_info['file_type'] }}</p>
+    {% endif %}
+  </body>
+</html>
