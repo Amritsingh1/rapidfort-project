@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-server-deployment
+spec:
+  replicas: 2 # Number of replicas/instances
+  selector:
+    matchLabels:
+      app: web-server
+  template:
+    metadata:
+      labels:
+        app: web-server
+    spec:
+      containers:
+        - name: web-server
+          image: 13hiamrit/my-web-server:latest
+          ports:
+            - containerPort: 5000
