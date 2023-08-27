@@ -1,20 +1,8 @@
-# Use an official Python runtime as a base image
-FROM python:3.9
-
-# Set the working directory in the container
+FROM python:3.9-slim-buster
 WORKDIR /app
-
-# Copy the requirements file into the container
-COPY requirements.txt /app/
-
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the rest of the application code into the container
-COPY . /app/
-
-# Expose the port the app runs on
+COPY ./requirements.txt /app
+RUN pip install -r requirements.txt
+COPY . .
 EXPOSE 5000
 
-# Define the command to run the app
-CMD ["python", "app.py"]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

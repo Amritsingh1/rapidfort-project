@@ -36,4 +36,4 @@ def upload_file():
         return "No file uploaded", 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run( port=5000)
